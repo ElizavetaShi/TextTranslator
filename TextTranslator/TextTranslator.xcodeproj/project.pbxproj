@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		727D85C42B3989E50092147B /* LanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85C32B3989E50092147B /* LanguageTableViewCell.swift */; };
 		72ED6CEC2B39673D0038D14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ED6CEB2B39673D0038D14C /* AppDelegate.swift */; };
 		72ED6CEE2B39673D0038D14C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ED6CED2B39673D0038D14C /* SceneDelegate.swift */; };
 		72ED6CF62B39673D0038D14C /* TextTranslator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72ED6CF42B39673D0038D14C /* TextTranslator.xcdatamodeld */; };
 		72ED6CF82B39673E0038D14C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72ED6CF72B39673E0038D14C /* Assets.xcassets */; };
 		72ED6CFB2B39673E0038D14C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72ED6CF92B39673E0038D14C /* LaunchScreen.storyboard */; };
+		72ED6D042B3971060038D14C /* LanguagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ED6D032B3971060038D14C /* LanguagesVC.swift */; };
+		72ED6D072B3971920038D14C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 72ED6D062B3971920038D14C /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		727D85C32B3989E50092147B /* LanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTableViewCell.swift; sourceTree = "<group>"; };
 		72ED6CE82B39673D0038D14C /* TextTranslator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextTranslator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72ED6CEB2B39673D0038D14C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72ED6CED2B39673D0038D14C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -22,6 +26,7 @@
 		72ED6CF72B39673E0038D14C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72ED6CFA2B39673E0038D14C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72ED6CFC2B39673E0038D14C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72ED6D032B3971060038D14C /* LanguagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,12 +34,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72ED6D072B3971920038D14C /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		727D85C22B3989CE0092147B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				727D85C32B3989E50092147B /* LanguageTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		727D85C52B39929B0092147B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				72ED6CED2B39673D0038D14C /* SceneDelegate.swift */,
+				72ED6CEB2B39673D0038D14C /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		72ED6CDF2B39673D0038D14C = {
 			isa = PBXGroup;
 			children = (
@@ -54,14 +77,23 @@
 		72ED6CEA2B39673D0038D14C /* TextTranslator */ = {
 			isa = PBXGroup;
 			children = (
-				72ED6CEB2B39673D0038D14C /* AppDelegate.swift */,
-				72ED6CED2B39673D0038D14C /* SceneDelegate.swift */,
+				727D85C52B39929B0092147B /* App */,
+				72ED6D022B3970F20038D14C /* LanguageModule */,
 				72ED6CF72B39673E0038D14C /* Assets.xcassets */,
 				72ED6CF92B39673E0038D14C /* LaunchScreen.storyboard */,
 				72ED6CFC2B39673E0038D14C /* Info.plist */,
 				72ED6CF42B39673D0038D14C /* TextTranslator.xcdatamodeld */,
 			);
 			path = TextTranslator;
+			sourceTree = "<group>";
+		};
+		72ED6D022B3970F20038D14C /* LanguageModule */ = {
+			isa = PBXGroup;
+			children = (
+				727D85C22B3989CE0092147B /* Cells */,
+				72ED6D032B3971060038D14C /* LanguagesVC.swift */,
+			);
+			path = LanguageModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +112,9 @@
 			dependencies = (
 			);
 			name = TextTranslator;
+			packageProductDependencies = (
+				72ED6D062B3971920038D14C /* SnapKit */,
+			);
 			productName = TextTranslator;
 			productReference = 72ED6CE82B39673D0038D14C /* TextTranslator.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +143,9 @@
 				Base,
 			);
 			mainGroup = 72ED6CDF2B39673D0038D14C;
+			packageReferences = (
+				72ED6D052B3971920038D14C /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 72ED6CE92B39673D0038D14C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,6 +172,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				727D85C42B3989E50092147B /* LanguageTableViewCell.swift in Sources */,
+				72ED6D042B3971060038D14C /* LanguagesVC.swift in Sources */,
 				72ED6CEC2B39673D0038D14C /* AppDelegate.swift in Sources */,
 				72ED6CF62B39673D0038D14C /* TextTranslator.xcdatamodeld in Sources */,
 				72ED6CEE2B39673D0038D14C /* SceneDelegate.swift in Sources */,
@@ -278,11 +318,11 @@
 				DEVELOPMENT_TEAM = F8MH5HU6HB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TextTranslator/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TextTranslator;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -307,11 +347,11 @@
 				DEVELOPMENT_TEAM = F8MH5HU6HB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TextTranslator/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TextTranslator;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -348,6 +388,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		72ED6D052B3971920038D14C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		72ED6D062B3971920038D14C /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 72ED6D052B3971920038D14C /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		72ED6CF42B39673D0038D14C /* TextTranslator.xcdatamodeld */ = {
