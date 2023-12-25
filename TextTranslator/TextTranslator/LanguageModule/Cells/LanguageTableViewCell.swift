@@ -54,7 +54,7 @@ final class LanguageTableViewCell: UITableViewCell {
         
         codeLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(16.0)
-            make.width.equalTo(40.0)
+            make.width.equalTo(60.0)
             make.height.equalTo(25.0)
             make.centerY.equalTo(contentView.snp.centerY)
         }
@@ -67,9 +67,9 @@ final class LanguageTableViewCell: UITableViewCell {
         
     }
     
-    func setupCell() {
-        codeLabel.text = "code"
-        nameLabel.text = "nameLanguage"
+    func setupCell(with model: LanguageResponseModel) {
+        codeLabel.text = model.code
+        nameLabel.text = model.name
     
     }
 }

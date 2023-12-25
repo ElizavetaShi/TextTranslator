@@ -15,7 +15,7 @@ final class NetworkService {
     ["X-RapidAPI-Host": "text-translator2.p.rapidapi.com",
      "X-RapidAPI-Key": "2f2610d3b1mshfb494c5847b8bdfp1db3c6jsn3045bd3c22f7"]
     
-    func loadLanguages(completion: @escaping() -> Void) {
+    func loadLanguages(completion: @escaping([LanguageResponseModel]) -> Void) {
         guard let url = URL(string: host + "/getLanguages") else { return }
         
         var request = URLRequest(url: url)
@@ -23,7 +23,10 @@ final class NetworkService {
         request.allHTTPHeaderFields = additionalHeaders
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let jsonData = data else { return }
-            print(String(data: jsonData, encoding: .utf8))
+            let responseModel = try? JSONDecoder().decode(LanguageResponse.self, from: jsonData)
+            DispatchQueue.main.async {
+                completion(responseModel?.data.languages ?? [])
+            }
         }.resume()
     }
     

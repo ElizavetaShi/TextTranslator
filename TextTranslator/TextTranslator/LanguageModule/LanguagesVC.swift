@@ -24,6 +24,12 @@ final class LanguagesVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     private let networkService = NetworkService()
     
+    private var languages: [LanguageResponseModel] = [] {
+        didSet {
+            languageTableView.reloadData()
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,19 +37,18 @@ final class LanguagesVC: UIViewController, UITableViewDataSource, UITableViewDel
         view.backgroundColor = .white
         title = "Languages"
         navigationController?.navigationBar.prefersLargeTitles = true
-      
+        
         setupUI()
         setupConstraints()
         
-        networkService.loadLanguages {
-            
+        networkService.loadLanguages { [weak self] languages in
+            self?.languages = languages
         }
     }
     
     private func setupUI() {
         
         view.addSubview(languageTableView)
-        
     }
     
     private func setupConstraints() {
@@ -55,22 +60,20 @@ final class LanguagesVC: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     
-//    MARK: TableViewDataSource, TableViewDelegate
+    //    MARK: TableViewDataSource, TableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return languages.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: LanguageTableViewCell.identifier) as! LanguageTableViewCell
-        cell.setupCell()
-        
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: LanguageTableViewCell.identifier, for: indexPath) as! LanguageTableViewCell
+        cell.setupCell(with: languages[indexPath.row])
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       dismiss(animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    
 }
