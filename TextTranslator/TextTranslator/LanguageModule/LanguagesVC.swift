@@ -22,6 +22,8 @@ final class LanguagesVC: UIViewController, UITableViewDataSource, UITableViewDel
         return tableView
     }()
     
+    private let networkService = NetworkService()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,10 @@ final class LanguagesVC: UIViewController, UITableViewDataSource, UITableViewDel
       
         setupUI()
         setupConstraints()
+        
+        networkService.loadLanguages {
+            
+        }
     }
     
     private func setupUI() {
