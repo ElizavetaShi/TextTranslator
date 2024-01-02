@@ -23,6 +23,8 @@ final class LanguagesVC: UIViewController, UITableViewDataSource, UITableViewDel
     }()
     
     private let networkService = NetworkService()
+    private let languageRepository = LanguageRepository()
+    private let ud = UserDefaults.standard
     
     private var languages: [LanguageResponseModel] = [] {
         didSet {
@@ -36,13 +38,29 @@ final class LanguagesVC: UIViewController, UITableViewDataSource, UITableViewDel
         
         view.backgroundColor = .white
         title = "Languages"
-        navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationController?.navigationBar.prefersLargeTitles = false
         
         setupUI()
         setupConstraints()
         
-        networkService.loadLanguages { [weak self] languages in
-            self?.languages = languages
+       loadDataIfNeeded()
+    }
+    
+    private func loadDataIfNeeded() {
+        let loadTimeKey = "kLastLoadTimeInterval"
+        let loadTime = ud.double(forKey: loadTimeKey)
+        let nowTime = Date().timeIntervalSince1970
+        let cashedLanguages = languageRepository.getLanguages()
+        if
+            nowTime - loadTime < 24 * 3600,
+            !cashedLanguages.isEmpty {
+            self.languages = cashedLanguages
+        } else {
+            networkService.loadLanguages { [weak self] languages in
+                self?.languages = languages
+                self?.languageRepository.save(models: languages)
+                self?.ud.set(nowTime, forKey: loadTimeKey)
+            }
         }
     }
     
@@ -55,7 +73,7 @@ final class LanguagesVC: UIViewController, UITableViewDataSource, UITableViewDel
         
         languageTableView.snp.makeConstraints { make in
             make.horizontalEdges.bottom.equalToSuperview()
-            make.top.equalToSuperview().inset(50.0)
+            make.top.equalToSuperview().inset(60.0)
         }
     }
     

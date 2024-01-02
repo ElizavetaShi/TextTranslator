@@ -13,6 +13,8 @@
 		727D85CD2B39A9D80092147B /* LanguageMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85CB2B39A9D80092147B /* LanguageMO+CoreDataProperties.swift */; };
 		727D85D02B39AA370092147B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85CF2B39AA370092147B /* NetworkService.swift */; };
 		727D85D32B39B28A0092147B /* LanguagesResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85D22B39B28A0092147B /* LanguagesResponseModels.swift */; };
+		727D85D52B3A05FC0092147B /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85D42B3A05FC0092147B /* CoreDataService.swift */; };
+		727D85D72B3A07B30092147B /* LanguageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85D62B3A07B30092147B /* LanguageRepository.swift */; };
 		72ED6CEC2B39673D0038D14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ED6CEB2B39673D0038D14C /* AppDelegate.swift */; };
 		72ED6CEE2B39673D0038D14C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ED6CED2B39673D0038D14C /* SceneDelegate.swift */; };
 		72ED6CF82B39673E0038D14C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72ED6CF72B39673E0038D14C /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		727D85CB2B39A9D80092147B /* LanguageMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		727D85CF2B39AA370092147B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		727D85D22B39B28A0092147B /* LanguagesResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesResponseModels.swift; sourceTree = "<group>"; };
+		727D85D42B3A05FC0092147B /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		727D85D62B3A07B30092147B /* LanguageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageRepository.swift; sourceTree = "<group>"; };
 		72ED6CE82B39673D0038D14C /* TextTranslator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextTranslator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72ED6CEB2B39673D0038D14C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72ED6CED2B39673D0038D14C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				727D85CF2B39AA370092147B /* NetworkService.swift */,
+				727D85D42B3A05FC0092147B /* CoreDataService.swift */,
+				727D85D62B3A07B30092147B /* LanguageRepository.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -111,14 +117,14 @@
 		72ED6CEA2B39673D0038D14C /* TextTranslator */ = {
 			isa = PBXGroup;
 			children = (
-				727D85CE2B39AA130092147B /* Services */,
-				727D85C92B39A9820092147B /* Models */,
-				727D85C62B39A6360092147B /* CoreData.xcdatamodeld */,
 				727D85C52B39929B0092147B /* App */,
-				72ED6D022B3970F20038D14C /* LanguageModule */,
 				72ED6CF72B39673E0038D14C /* Assets.xcassets */,
-				72ED6CF92B39673E0038D14C /* LaunchScreen.storyboard */,
+				727D85C62B39A6360092147B /* CoreData.xcdatamodeld */,
 				72ED6CFC2B39673E0038D14C /* Info.plist */,
+				72ED6D022B3970F20038D14C /* LanguageModule */,
+				72ED6CF92B39673E0038D14C /* LaunchScreen.storyboard */,
+				727D85C92B39A9820092147B /* Models */,
+				727D85CE2B39AA130092147B /* Services */,
 			);
 			path = TextTranslator;
 			sourceTree = "<group>";
@@ -210,6 +216,8 @@
 			files = (
 				727D85C42B3989E50092147B /* LanguageTableViewCell.swift in Sources */,
 				727D85CD2B39A9D80092147B /* LanguageMO+CoreDataProperties.swift in Sources */,
+				727D85D52B3A05FC0092147B /* CoreDataService.swift in Sources */,
+				727D85D72B3A07B30092147B /* LanguageRepository.swift in Sources */,
 				727D85D32B39B28A0092147B /* LanguagesResponseModels.swift in Sources */,
 				727D85D02B39AA370092147B /* NetworkService.swift in Sources */,
 				72ED6D042B3971060038D14C /* LanguagesVC.swift in Sources */,
