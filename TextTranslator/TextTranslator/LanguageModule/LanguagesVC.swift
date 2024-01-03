@@ -37,13 +37,14 @@ final class LanguagesVC: UIViewController, UITableViewDataSource, UITableViewDel
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        title = "Languages"
-//        navigationController?.navigationBar.prefersLargeTitles = false
         
         setupUI()
         setupConstraints()
         
        loadDataIfNeeded()
+        networkService.translate(sourceCode: "en", targetCode: "ru", text: "hello world") { translatedText in
+            print(translatedText)
+        }
     }
     
     private func loadDataIfNeeded() {
