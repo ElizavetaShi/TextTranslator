@@ -10,7 +10,7 @@ import SnapKit
 
 final class TranslateVC: UIViewController {
     
-    private lazy var selectSorceLangButton: UIButton = .selectButton(with: "Select source language")
+    private lazy var selectSorceLangButton: UIButton = .selectButton(with: "Select source language").withAction(self, #selector(didSourceButtonTap))
     
     private lazy var sourceTextView: UITextView = {
         let textView = UITextView()
@@ -26,7 +26,7 @@ final class TranslateVC: UIViewController {
         return view
     }()
     
-    private lazy var selectTargetLangButton: UIButton = .selectButton(with: "Select target language")
+    private lazy var selectTargetLangButton: UIButton = .selectButton(with: "Select target language").withAction(self, #selector(didTargetButtonTap))
     
     private lazy var targetTextView: UITextView = {
         let textView = UITextView()
@@ -35,8 +35,42 @@ final class TranslateVC: UIViewController {
         return textView
     }()
     
-    private lazy var translateButton: UIButton = .translateButton()
+    private lazy var translateButton: UIButton = .translateButton().withAction(self, #selector(didTranslateButtonTap))
     
+    private var sourceLanguage: LanguageResponseModel? {
+        didSet {
+            selectSorceLangButton.setTitle(sourceLanguage?.name, for: .normal)
+        }
+    }
+    private var targetLanguage: LanguageResponseModel? {
+        didSet {
+            selectTargetLangButton.setTitle(targetLanguage?.name, for: .normal)
+        }
+    }
+    
+    private var networkService = NetworkService()
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    private func openLanguageVC(with type: LanguageType) {
+        
+        let nextVC = LanguageAssembler.languageVC()
+        nextVC.delegate = self
+        nextVC.type = type
+        present(nextVC, animated: true)
+    }
+    
+    private func translate(text: String) {
+        
+        guard let sourceCode = sourceLanguage?.code,
+              let targetCode = targetLanguage?.code else { return }
+        networkService.translate(sourceCode: sourceCode, targetCode: targetCode, text: text) { [weak self] translatedText in
+            self?.targetTextView.text = translatedText
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +126,32 @@ final class TranslateVC: UIViewController {
             make.horizontalEdges.equalToSuperview().inset(20.0)
             make.height.equalTo(40.0)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20.0)
+        }
+    }
+    
+    @objc private func didSourceButtonTap() {
+        
+        openLanguageVC(with: .source)
+    }
+    
+    @objc private func didTargetButtonTap() {
+        
+        openLanguageVC(with: .target)
+    }
+    
+    @objc private func didTranslateButtonTap() {
+        
+        guard let sourceText = sourceTextView.text, !sourceText.isEmpty else { return }
+        translate(text: sourceText)
+    }
+}
+
+extension TranslateVC: LanguageVCDelegate {
+    func didSelect(language: LanguageResponseModel, with type: LanguageType) {
+        switch type {
+        case .source: sourceLanguage = language
+        case .target: targetLanguage = language
+        case .none: break
         }
     }
 }

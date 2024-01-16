@@ -8,7 +8,17 @@
 import UIKit
 import SnapKit
 
-final class LanguagesVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+enum LanguageType {
+    case source
+    case target
+    case none
+}
+
+protocol LanguageVCDelegate:AnyObject {
+    func didSelect(language: LanguageResponseModel, with type: LanguageType)
+}
+
+final class LanguageVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private lazy var languageTableView: UITableView = {
         let tableView = UITableView()
@@ -22,16 +32,9 @@ final class LanguagesVC: UIViewController, UITableViewDataSource, UITableViewDel
         return tableView
     }()
     
-    private let networkService = NetworkService()
-    private let languageRepository = LanguageRepository()
-    private let ud = UserDefaults.standard
-    
-    private var languages: [LanguageResponseModel] = [] {
-        didSet {
-            languageTableView.reloadData()
-        }
-    }
-    
+    var delegate: LanguageVCDelegate?
+    var type: LanguageType = .none
+    var viewModel: LanguageVMProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,28 +44,7 @@ final class LanguagesVC: UIViewController, UITableViewDataSource, UITableViewDel
         setupUI()
         setupConstraints()
         
-       loadDataIfNeeded()
-        networkService.translate(sourceCode: "en", targetCode: "ru", text: "hello world") { translatedText in
-            print(translatedText)
-        }
-    }
-    
-    private func loadDataIfNeeded() {
-        let loadTimeKey = "kLastLoadTimeInterval"
-        let loadTime = ud.double(forKey: loadTimeKey)
-        let nowTime = Date().timeIntervalSince1970
-        let cashedLanguages = languageRepository.getLanguages()
-        if
-            nowTime - loadTime < 24 * 3600,
-            !cashedLanguages.isEmpty {
-            self.languages = cashedLanguages
-        } else {
-            networkService.loadLanguages { [weak self] languages in
-                self?.languages = languages
-                self?.languageRepository.save(models: languages)
-                self?.ud.set(nowTime, forKey: loadTimeKey)
-            }
-        }
+        viewModel.loadDataIfNeeded()
     }
     
     private func setupUI() {
@@ -82,17 +64,21 @@ final class LanguagesVC: UIViewController, UITableViewDataSource, UITableViewDel
     //    MARK: TableViewDataSource, TableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return languages.count
+        return viewModel.languages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: LanguageTableViewCell.identifier, for: indexPath) as! LanguageTableViewCell
-        cell.setupCell(with: languages[indexPath.row])
+        cell.setupCell(with: viewModel.languages[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        delegate?.didSelect(language: viewModel.languages[indexPath.row], with: type)
+        
+        dismiss(animated: true)
     }
 }
