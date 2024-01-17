@@ -26,7 +26,6 @@ final class LanguageTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 17.0)
         return label
-        
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -64,12 +63,10 @@ final class LanguageTableViewCell: UITableViewCell {
             make.left.equalTo(codeLabel.snp.right).inset(8.0)
             make.right.equalToSuperview().inset(16.0)
         }
-        
     }
     
     func setupCell(with model: LanguageResponseModel) {
         codeLabel.text = model.code
         nameLabel.text = model.name
-    
     }
 }

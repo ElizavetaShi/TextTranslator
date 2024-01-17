@@ -13,7 +13,9 @@ final class TranslateAssembler {
     
     static func translateVC() -> TranslateVC {
         let vc = TranslateVC()
-        
-        return
+        let vm = TranslateVM(view: vc,
+                             networkService: NetworkService())
+        vc.viewModel = vm
+        return vc
     }
 }

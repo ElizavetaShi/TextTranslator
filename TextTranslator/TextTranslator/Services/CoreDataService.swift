@@ -10,12 +10,16 @@ import CoreData
 
 final class CoreDataService {
     
-    static var context: NSManagedObjectContext {
+    static var shared: CoreDataService = CoreDataService()
+    
+    private init() {}
+    
+    var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
-    static var persistentContainer: NSPersistentContainer = {
-     
+    var persistentContainer: NSPersistentContainer = {
+        
         let container = NSPersistentContainer(name: "CoreData")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -24,9 +28,8 @@ final class CoreDataService {
         })
         return container
     }()
-
     
-    static func saveContext () {
+    func saveContext () {
         if context.hasChanges {
             do {
                 try context.save()

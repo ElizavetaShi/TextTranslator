@@ -10,6 +10,7 @@ import UIKit
 final class MainNC: UINavigationController {
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         viewControllers.append(TranslateAssembler.translateVC())
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 extension UIButton {
     
     static func selectButton(with title: String) -> UIButton {
-       let button = UIButton()
+        let button = UIButton()
         button.backgroundColor = .cyan
         button.setTitle(title, for: .normal)
         button.setTitleColor(.darkGray, for: .normal)
@@ -33,6 +33,5 @@ extension UIButton {
         button.layer.borderWidth = 1.0
         button.titleLabel?.font = .systemFont(ofSize: 17.0)
         return button
-
- }
+    }
 }

@@ -16,10 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
-        let vc = TranslateVC()
         
-        
-        window?.rootViewController = vc
+        window?.rootViewController = MainNC()
         window?.makeKeyAndVisible()
     }
     
@@ -41,7 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func sceneDidEnterBackground(_ scene: UIScene) {
         
-        CoreDataService.saveContext()
+        CoreDataService.shared.saveContext()
     }
 }
 

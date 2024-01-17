@@ -23,8 +23,10 @@
 		727D85EE2B55B5340092147B /* LanguageAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85ED2B55B5340092147B /* LanguageAssembler.swift */; };
 		727D85F12B55B92F0092147B /* MainNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85F02B55B92F0092147B /* MainNC.swift */; };
 		727D85F32B55C16F0092147B /* LanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85F22B55C16F0092147B /* LanguageVM.swift */; };
-		727D85F62B55C3AB0092147B /* NetworkServiceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85F52B55C3AB0092147B /* NetworkServiceUseCase.swift */; };
-		727D85F82B55C4380092147B /* LanguageRepositoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85F72B55C4380092147B /* LanguageRepositoryUseCase.swift */; };
+		727D85F62B55C3AB0092147B /* NetworkService+LanguageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85F52B55C3AB0092147B /* NetworkService+LanguageUseCase.swift */; };
+		727D85F82B55C4380092147B /* LanguageRepository+LanguageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85F72B55C4380092147B /* LanguageRepository+LanguageUseCase.swift */; };
+		727D85FA2B5671E10092147B /* TranslateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85F92B5671E10092147B /* TranslateVM.swift */; };
+		727D85FD2B567DEA0092147B /* NetworkService+TranslateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727D85FC2B567DEA0092147B /* NetworkService+TranslateUseCase.swift */; };
 		72ED6CEC2B39673D0038D14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ED6CEB2B39673D0038D14C /* AppDelegate.swift */; };
 		72ED6CEE2B39673D0038D14C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ED6CED2B39673D0038D14C /* SceneDelegate.swift */; };
 		72ED6CF82B39673E0038D14C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72ED6CF72B39673E0038D14C /* Assets.xcassets */; };
@@ -50,8 +52,10 @@
 		727D85ED2B55B5340092147B /* LanguageAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageAssembler.swift; sourceTree = "<group>"; };
 		727D85F02B55B92F0092147B /* MainNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNC.swift; sourceTree = "<group>"; };
 		727D85F22B55C16F0092147B /* LanguageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVM.swift; sourceTree = "<group>"; };
-		727D85F52B55C3AB0092147B /* NetworkServiceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceUseCase.swift; sourceTree = "<group>"; };
-		727D85F72B55C4380092147B /* LanguageRepositoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageRepositoryUseCase.swift; sourceTree = "<group>"; };
+		727D85F52B55C3AB0092147B /* NetworkService+LanguageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+LanguageUseCase.swift"; sourceTree = "<group>"; };
+		727D85F72B55C4380092147B /* LanguageRepository+LanguageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LanguageRepository+LanguageUseCase.swift"; sourceTree = "<group>"; };
+		727D85F92B5671E10092147B /* TranslateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateVM.swift; sourceTree = "<group>"; };
+		727D85FC2B567DEA0092147B /* NetworkService+TranslateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+TranslateUseCase.swift"; sourceTree = "<group>"; };
 		72ED6CE82B39673D0038D14C /* TextTranslator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextTranslator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72ED6CEB2B39673D0038D14C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72ED6CED2B39673D0038D14C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,8 +126,10 @@
 		727D85DA2B45CACD0092147B /* TranslateModule */ = {
 			isa = PBXGroup;
 			children = (
-				727D85DB2B45CAE60092147B /* TranslateVC.swift */,
+				727D85FB2B567DBC0092147B /* UseCases */,
 				727D85EB2B55B4E00092147B /* TranslateAssembler.swift */,
+				727D85DB2B45CAE60092147B /* TranslateVC.swift */,
+				727D85F92B5671E10092147B /* TranslateVM.swift */,
 			);
 			path = TranslateModule;
 			sourceTree = "<group>";
@@ -131,7 +137,6 @@
 		727D85DD2B45D6320092147B /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				727D85E82B55AF900092147B /* Utils */,
 				727D85DE2B45D6460092147B /* UIButton+Style.swift */,
 			);
 			path = Styles;
@@ -166,10 +171,18 @@
 		727D85F42B55C3990092147B /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				727D85F52B55C3AB0092147B /* NetworkServiceUseCase.swift */,
-				727D85F72B55C4380092147B /* LanguageRepositoryUseCase.swift */,
+				727D85F52B55C3AB0092147B /* NetworkService+LanguageUseCase.swift */,
+				727D85F72B55C4380092147B /* LanguageRepository+LanguageUseCase.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		727D85FB2B567DBC0092147B /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				727D85FC2B567DEA0092147B /* NetworkService+TranslateUseCase.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		72ED6CDF2B39673D0038D14C = {
@@ -194,6 +207,7 @@
 				727D85E02B45EEF40092147B /* Modules */,
 				727D85DD2B45D6320092147B /* Styles */,
 				72ED6CF72B39673E0038D14C /* Assets.xcassets */,
+				727D85E82B55AF900092147B /* Utils */,
 				727D85C52B39929B0092147B /* App */,
 				727D85C62B39A6360092147B /* CoreData.xcdatamodeld */,
 				72ED6CFC2B39673E0038D14C /* Info.plist */,
@@ -207,11 +221,11 @@
 		72ED6D022B3970F20038D14C /* LanguageModule */ = {
 			isa = PBXGroup;
 			children = (
-				727D85F42B55C3990092147B /* UseCase */,
 				727D85C22B3989CE0092147B /* Cells */,
+				727D85ED2B55B5340092147B /* LanguageAssembler.swift */,
 				72ED6D032B3971060038D14C /* LanguageVC.swift */,
 				727D85F22B55C16F0092147B /* LanguageVM.swift */,
-				727D85ED2B55B5340092147B /* LanguageAssembler.swift */,
+				727D85F42B55C3990092147B /* UseCase */,
 			);
 			path = LanguageModule;
 			sourceTree = "<group>";
@@ -298,10 +312,10 @@
 				727D85D52B3A05FC0092147B /* CoreDataService.swift in Sources */,
 				727D85D72B3A07B30092147B /* LanguageRepository.swift in Sources */,
 				727D85DC2B45CAE60092147B /* TranslateVC.swift in Sources */,
-				727D85F62B55C3AB0092147B /* NetworkServiceUseCase.swift in Sources */,
+				727D85F62B55C3AB0092147B /* NetworkService+LanguageUseCase.swift in Sources */,
 				727D85D32B39B28A0092147B /* LanguagesResponseModels.swift in Sources */,
 				727D85EA2B55AFC10092147B /* UIButton+Actions.swift in Sources */,
-				727D85F82B55C4380092147B /* LanguageRepositoryUseCase.swift in Sources */,
+				727D85F82B55C4380092147B /* LanguageRepository+LanguageUseCase.swift in Sources */,
 				727D85D92B4477AB0092147B /* TranslateResponseModels.swift in Sources */,
 				727D85F12B55B92F0092147B /* MainNC.swift in Sources */,
 				727D85D02B39AA370092147B /* NetworkService.swift in Sources */,
@@ -310,9 +324,11 @@
 				727D85EE2B55B5340092147B /* LanguageAssembler.swift in Sources */,
 				727D85C82B39A6360092147B /* CoreData.xcdatamodeld in Sources */,
 				727D85CC2B39A9D80092147B /* LanguageMO+CoreDataClass.swift in Sources */,
+				727D85FD2B567DEA0092147B /* NetworkService+TranslateUseCase.swift in Sources */,
 				72ED6CEC2B39673D0038D14C /* AppDelegate.swift in Sources */,
 				72ED6CEE2B39673D0038D14C /* SceneDelegate.swift in Sources */,
 				727D85EC2B55B4E00092147B /* TranslateAssembler.swift in Sources */,
+				727D85FA2B5671E10092147B /* TranslateVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

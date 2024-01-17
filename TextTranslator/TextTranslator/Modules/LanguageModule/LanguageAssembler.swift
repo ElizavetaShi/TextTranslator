@@ -11,9 +11,13 @@ final class LanguageAssembler {
     
     private init() {}
     
-    static func languageVC() -> LanguageVC {
+    static func languageVC(type: LanguageType, delegate: LanguageVCDelegate) -> LanguageVC {
         let vc = LanguageVC()
-        let vm = LanguageVM(networkService: NetworkService(), languageRepository: LanguageRepository())
+        let vm = LanguageVM(view: vc,
+                            networkService: NetworkService(),
+                            languageRepository: LanguageRepository())
+        vm.type = type
+        vm.delegate = delegate
         vc.viewModel = vm
         return vc
     }

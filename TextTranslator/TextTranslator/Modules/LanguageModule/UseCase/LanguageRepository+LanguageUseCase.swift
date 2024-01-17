@@ -1,5 +1,5 @@
 //
-//  LanguageRepositoryUseCase.swift
+//  LanguageRepository+LanguageUseCase.swift
 //  TextTranslator
 //
 //  Created by Elizaveta Shidlovskaya on 15.01.24.

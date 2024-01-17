@@ -14,7 +14,7 @@ enum LanguageType {
     case none
 }
 
-protocol LanguageVCDelegate:AnyObject {
+protocol LanguageVCDelegate: AnyObject {
     func didSelect(language: LanguageResponseModel, with type: LanguageType)
 }
 
@@ -32,14 +32,10 @@ final class LanguageVC: UIViewController, UITableViewDataSource, UITableViewDele
         return tableView
     }()
     
-    var delegate: LanguageVCDelegate?
-    var type: LanguageType = .none
     var viewModel: LanguageVMProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .white
         
         setupUI()
         setupConstraints()
@@ -48,6 +44,8 @@ final class LanguageVC: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     private func setupUI() {
+        
+        view.backgroundColor = .white
         
         view.addSubview(languageTableView)
     }
@@ -59,7 +57,6 @@ final class LanguageVC: UIViewController, UITableViewDataSource, UITableViewDele
             make.top.equalToSuperview().inset(60.0)
         }
     }
-    
     
     //    MARK: TableViewDataSource, TableViewDelegate
     
@@ -77,8 +74,14 @@ final class LanguageVC: UIViewController, UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        delegate?.didSelect(language: viewModel.languages[indexPath.row], with: type)
+        viewModel.didSelect(language: viewModel.languages[indexPath.row])
         
         dismiss(animated: true)
+    }
+}
+
+extension LanguageVC: LanguageVCProtocol {
+    func reloadData() {
+        languageTableView.reloadData()
     }
 }
