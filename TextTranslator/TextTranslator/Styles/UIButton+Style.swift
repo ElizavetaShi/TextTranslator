@@ -25,7 +25,7 @@ extension UIButton {
     static func translateButton() -> UIButton {
         let button = UIButton()
         button.backgroundColor = .cyan
-        button.setTitle("Translate", for: .normal)
+        button.setTitle("translate_button".localizable, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(.black.withAlphaComponent(0.8), for: .highlighted)
         button.layer.cornerRadius = 5.0

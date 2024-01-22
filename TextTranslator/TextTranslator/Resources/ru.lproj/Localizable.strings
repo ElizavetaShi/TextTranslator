@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  TextTranslator
+
+  Created by Elizaveta Shidlovskaya on 22.01.24.
+  
+*/
+
+"select_sourceLang_button" = "Выбрать исходный язык";
+"select_targetLang_button" = "Выбрать язык для перевода";
+"translate_button" = "Перевести";
+

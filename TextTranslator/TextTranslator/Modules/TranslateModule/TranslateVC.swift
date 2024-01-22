@@ -11,7 +11,7 @@ import SnapKit
 final class TranslateVC: UIViewController {
     
     private lazy var selectSorceLangButton: UIButton =
-        .selectButton(with: "Select source language")
+        .selectButton(with: "select_sourceLang_button".localizable)
         .withAction(self, #selector(didSourceButtonTap))
     
     private lazy var sourceTextView: UITextView = {
@@ -29,7 +29,7 @@ final class TranslateVC: UIViewController {
     }()
     
     private lazy var selectTargetLangButton: UIButton =
-        .selectButton(with: "Select target language")
+        .selectButton(with: "select_targetLang_button".localizable)
         .withAction(self, #selector(didTargetButtonTap))
     
     private lazy var targetTextView: UITextView = {
@@ -79,7 +79,7 @@ final class TranslateVC: UIViewController {
         selectSorceLangButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(20.0)
             make.left.equalToSuperview().inset(20.0)
-            make.width.equalTo(200.0)
+            make.width.equalTo(250.0)
             make.height.equalTo(30.0)
         }
         
@@ -98,7 +98,7 @@ final class TranslateVC: UIViewController {
         selectTargetLangButton.snp.makeConstraints { make in
             make.top.equalTo(separatorView.snp.bottom).offset(20.0)
             make.left.equalToSuperview().inset(20.0)
-            make.width.equalTo(200.0)
+            make.width.equalTo(250.0)
             make.height.equalTo(30.0)
         }
         
