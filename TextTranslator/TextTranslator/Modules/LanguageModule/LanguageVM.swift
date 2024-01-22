@@ -35,6 +35,23 @@ final class LanguageVM: LanguageVMProtocol {
             view?.reloadData()
         }
     }
+ 
+    private let networkService: NetworkServiceLanguageUseCase
+    private let languageRepository: LanguageRepositoryLanguageUseCase
+    private let ud = UserDefaults.standard
+    
+    var delegate: LanguageVCDelegate?
+    var type: LanguageType = .none
+    
+    private weak var view: LanguageVCProtocol?
+    
+    init(view: LanguageVCProtocol,
+         networkService: NetworkServiceLanguageUseCase,
+         languageRepository: LanguageRepositoryLanguageUseCase) {
+        self.view = view
+        self.networkService = networkService
+        self.languageRepository = languageRepository
+    }
     
     func loadDataIfNeeded() {
         let loadTimeKey = "kLastLoadTimeInterval"
@@ -52,23 +69,6 @@ final class LanguageVM: LanguageVMProtocol {
                 self?.ud.set(nowTime, forKey: loadTimeKey)
             }
         }
-    }
-    
-    private let networkService: NetworkServiceLanguageUseCase
-    private let languageRepository: LanguageRepositoryLanguageUseCase
-    private let ud = UserDefaults.standard
-    
-    var delegate: LanguageVCDelegate?
-    var type: LanguageType = .none
-    
-    private weak var view: LanguageVCProtocol?
-    
-    init(view: LanguageVCProtocol,
-         networkService: NetworkServiceLanguageUseCase,
-         languageRepository: LanguageRepositoryLanguageUseCase) {
-        self.view = view
-        self.networkService = networkService
-        self.languageRepository = languageRepository
     }
     
     func didSelect(language: LanguageResponseModel) {
