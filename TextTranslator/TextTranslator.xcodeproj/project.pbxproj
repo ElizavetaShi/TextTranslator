@@ -217,15 +217,15 @@
 		72ED6CEA2B39673D0038D14C /* TextTranslator */ = {
 			isa = PBXGroup;
 			children = (
-				727D86082B5EEA620092147B /* Resources */,
-				727D85E02B45EEF40092147B /* Modules */,
-				727D85DD2B45D6320092147B /* Styles */,
-				727D85E82B55AF900092147B /* Utils */,
 				727D85C52B39929B0092147B /* App */,
 				727D85C62B39A6360092147B /* CoreData.xcdatamodeld */,
 				72ED6CFC2B39673E0038D14C /* Info.plist */,
 				727D85C92B39A9820092147B /* Models */,
+				727D85E02B45EEF40092147B /* Modules */,
+				727D86082B5EEA620092147B /* Resources */,
 				727D85CE2B39AA130092147B /* Services */,
+				727D85DD2B45D6320092147B /* Styles */,
+				727D85E82B55AF900092147B /* Utils */,
 			);
 			path = TextTranslator;
 			sourceTree = "<group>";
